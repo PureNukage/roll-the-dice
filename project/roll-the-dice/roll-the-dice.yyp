@@ -1,7 +1,9 @@
 {
   "resources": [
     {"id":{"name":"definitions","path":"scripts/definitions/definitions.yy",},"order":0,},
+    {"id":{"name":"s_joey","path":"sprites/s_joey/s_joey.yy",},"order":20,},
     {"id":{"name":"s_dice_4","path":"sprites/s_dice_4/s_dice_4.yy",},"order":14,},
+    {"id":{"name":"s_gerald","path":"sprites/s_gerald/s_gerald.yy",},"order":19,},
     {"id":{"name":"input","path":"objects/input/input.yy",},"order":4,},
     {"id":{"name":"s_dice_5","path":"sprites/s_dice_5/s_dice_5.yy",},"order":15,},
     {"id":{"name":"ladder","path":"objects/ladder/ladder.yy",},"order":8,},
@@ -29,6 +31,7 @@
     {"id":{"name":"s_dice_3","path":"sprites/s_dice_3/s_dice_3.yy",},"order":13,},
     {"id":{"name":"app","path":"objects/app/app.yy",},"order":0,},
     {"id":{"name":"sound","path":"objects/sound/sound.yy",},"order":5,},
+    {"id":{"name":"s_baldric","path":"sprites/s_baldric/s_baldric.yy",},"order":18,},
     {"id":{"name":"s_background","path":"sprites/s_background/s_background.yy",},"order":10,},
     {"id":{"name":"s_pink_balloon","path":"sprites/s_pink_balloon/s_pink_balloon.yy",},"order":8,},
     {"id":{"name":"s_collision_blue","path":"sprites/s_collision_blue/s_collision_blue.yy",},"order":0,},

@@ -1,7 +1,7 @@
 {
   "spriteId": {
-    "name": "s_collision_green",
-    "path": "sprites/s_collision_green/s_collision_green.yy",
+    "name": "s_baldric",
+    "path": "sprites/s_baldric/s_baldric.yy",
   },
   "solid": false,
   "visible": true,
