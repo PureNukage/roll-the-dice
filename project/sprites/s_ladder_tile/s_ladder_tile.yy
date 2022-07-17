@@ -25,8 +25,8 @@
   "gridY": 0,
   "frames": [
     {"compositeImage":{"FrameId":{"name":"df3c2d3a-21a2-4e81-a076-061618bb5b0f","path":"sprites/s_ladder_tile/s_ladder_tile.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
-        {"FrameId":{"name":"df3c2d3a-21a2-4e81-a076-061618bb5b0f","path":"sprites/s_ladder_tile/s_ladder_tile.yy",},"LayerId":{"name":"96d9406c-ab6d-4420-9236-aef9d0a86ea8","path":"sprites/s_ladder_tile/s_ladder_tile.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
         {"FrameId":{"name":"df3c2d3a-21a2-4e81-a076-061618bb5b0f","path":"sprites/s_ladder_tile/s_ladder_tile.yy",},"LayerId":{"name":"28b3f4ef-271e-4d6b-8329-59c7728ebb87","path":"sprites/s_ladder_tile/s_ladder_tile.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
+        {"FrameId":{"name":"df3c2d3a-21a2-4e81-a076-061618bb5b0f","path":"sprites/s_ladder_tile/s_ladder_tile.yy",},"LayerId":{"name":"96d9406c-ab6d-4420-9236-aef9d0a86ea8","path":"sprites/s_ladder_tile/s_ladder_tile.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
       ],"parent":{"name":"s_ladder_tile","path":"sprites/s_ladder_tile/s_ladder_tile.yy",},"resourceVersion":"1.0","name":"df3c2d3a-21a2-4e81-a076-061618bb5b0f","tags":[],"resourceType":"GMSpriteFrame",},
   ],
   "sequence": {

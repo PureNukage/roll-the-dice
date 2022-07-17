@@ -1,26 +1,39 @@
 ////	Spawn ladder tiles
+
+ladders = ds_list_create()
+
+function ladder_trim() {
+	while ds_list_size(ladders) > 6 {
+		var Ladder = ladders[| 6]
+		ds_list_delete(ladders,6)
+		instance_destroy(Ladder)
+	}
+	debug.log("ladders size: "+string(ds_list_size(ladders)))
+}
+
 //	Left Ladder
 var xx = 128
 var yy = 0
-instance_create_layer(xx,yy,"Instances",ladder) yy += 70
-instance_create_layer(xx,yy,"Instances",ladder) yy += 70
-instance_create_layer(xx,yy,"Instances",ladder) yy += 70
-instance_create_layer(xx,yy,"Instances",ladder) yy += 70
-var BottomLeft = instance_create_layer(xx,yy,"Instances",ladder) yy += 70
-instance_create_layer(xx,yy,"Instances",ladder) yy += 70
+var Ladder = instance_create_layer(xx,yy,"Instances",ladder) yy += 70 ds_list_add(ladders, Ladder)
+var Ladder = instance_create_layer(xx,yy,"Instances",ladder) yy += 70 ds_list_add(ladders, Ladder)
+var Ladder = instance_create_layer(xx,yy,"Instances",ladder) yy += 70 ds_list_add(ladders, Ladder)
+var Ladder = instance_create_layer(xx,yy,"Instances",ladder) yy += 70 ds_list_add(ladders, Ladder)
+var BottomLeft = instance_create_layer(xx,yy,"Instances",ladder) yy += 70 ds_list_add(ladders, BottomLeft)
+var Ladder = instance_create_layer(xx,yy,"Instances",ladder) yy += 70 ds_list_add(ladders, Ladder)
 
-//	Right Ladder
-var xx = 416
-var yy = 0
-instance_create_layer(xx,yy,"Instances",ladder) yy += 70
-instance_create_layer(xx,yy,"Instances",ladder) yy += 70
-instance_create_layer(xx,yy,"Instances",ladder) yy += 70
-instance_create_layer(xx,yy,"Instances",ladder) yy += 70
-var BottomRight = instance_create_layer(xx,yy,"Instances",ladder) yy += 70
-instance_create_layer(xx,yy,"Instances",ladder) yy += 70
+////	Right Ladder
+//var xx = 416
+//var yy = 0
+//instance_create_layer(xx,yy,"Instances",ladder) yy += 70
+//instance_create_layer(xx,yy,"Instances",ladder) yy += 70
+//instance_create_layer(xx,yy,"Instances",ladder) yy += 70
+//instance_create_layer(xx,yy,"Instances",ladder) yy += 70
+//var BottomRight = instance_create_layer(xx,yy,"Instances",ladder) yy += 70
+//instance_create_layer(xx,yy,"Instances",ladder) yy += 70
 
 //	Spawn the player
 var Player = instance_create_layer(BottomLeft.x + BottomLeft.sprite_width/2 + 5,BottomLeft.y + BottomLeft.sprite_height/2,"Instances",player)
+Player.Ladder = BottomLeft
 
 
 dicerolling = -1
@@ -59,8 +72,6 @@ function _diceroll(Dice, x_mod) {
 			Dice.x -= 3 * x_mod
 			draw_sprite_ext(s_dice_blank,0,Dice.x,Dice.y,scale,scale,Dice.angle,c_white,1)
 			
-			debug.log(object_get_name(dice1))
-			
 			if x_mod == -1 {
 				if Dice.x >= display_get_gui_width()/2 {
 					Dice.state += 1
@@ -88,14 +99,40 @@ function _diceroll(Dice, x_mod) {
 					dicerolling = -1
 					dice1.state = -1
 					dice2.state = -1
+					
+					//	Find index of current player ladder in ladders list
+					var Index = ds_list_find_index(ladders, player.Ladder)
+					var newIndex = Index-Dice.value
+					
+					//	Find the difference between the segments and spawn in new ladder pieces
+					var difference = Index - newIndex
+					var xx = ladders[| 0].x
+					var yy = ladders[| 0].y - 70
+					
+					for(var i=0;i<difference;i++) {
+						var Ladder = instance_create_layer(xx,yy,"Instances",ladder) 
+						yy -= 70
+						
+						//	Prep for choosing if this ladder segment gets anything wonky
+						
+						ds_list_insert(ladders, 0, Ladder)
+					}
+					
+					//	Set all ladders new goalX and goalY
+					for(var i=0;i<ds_list_size(ladders);i++) {
+						var Ladder = ladders[| i]
+						Ladder.goalX = Ladder.x
+						Ladder.goalY = Ladder.y + (difference * 70)
+					}
+					
+					//	Refind players current ladder index and then find the new index
+					var Index = ds_list_find_index(ladders, player.Ladder)
+					var newIndex = Index-Dice.value
+					player.Ladder = ladders[| newIndex]
+					
 				}
 			}
 			draw_sprite_ext(sprite,0,Dice.x,Dice.y,scale,scale,Dice.angle,c_white,1)
-			//dicerolling -= 1
-			//if dicerolling <= 0 {
-			//	dicerolling = -1
-			//	Dice.state = -1
-			//}
 		break
 	}
 }
