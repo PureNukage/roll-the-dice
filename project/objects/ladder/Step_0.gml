@@ -8,7 +8,11 @@ if (goalX != -1 or goalY != -1) {
 		goalX = -1
 		goalY = -1
 		controller.ladder_trim()
+		
+		controller.laddersMoving = false
 	}
 }
+
+if rotten and sprite_index != s_ladder_tile_rotten sprite_index = s_ladder_tile_rotten
 
 applyMovement()

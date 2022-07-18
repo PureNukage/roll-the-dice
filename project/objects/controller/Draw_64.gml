@@ -1,4 +1,4 @@
-if dicerolling == -1 {
+if dicerolling == -1 and !laddersMoving {
 
 	var width = 128
 	var height = 64

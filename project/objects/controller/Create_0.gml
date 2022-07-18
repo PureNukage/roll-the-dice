@@ -1,6 +1,7 @@
 ////	Spawn ladder tiles
 
 ladders = ds_list_create()
+laddersMoving = false
 
 function ladder_trim() {
 	while ds_list_size(ladders) > 6 {
@@ -113,7 +114,28 @@ function _diceroll(Dice, x_mod) {
 						var Ladder = instance_create_layer(xx,yy,"Instances",ladder) 
 						yy -= 70
 						
-						//	Prep for choosing if this ladder segment gets anything wonky
+						//	Does this ladder segment get anything?
+						var defaultRottenBananaOrTomato = choose(0,0,0,0,0, 1,1, 2,2, 3)
+						
+						switch(defaultRottenBananaOrTomato) {
+							//	Default
+							case 0:
+								
+							break
+							//	Rotten
+							case 1:
+								Ladder.rotten = true
+							break
+							//	Banana
+							case 2:
+								Ladder.banana = true
+							break
+							//	Tomato
+							case 3:
+								Ladder.tomato = true
+							break
+						}
+						
 						
 						ds_list_insert(ladders, 0, Ladder)
 					}
@@ -129,6 +151,8 @@ function _diceroll(Dice, x_mod) {
 					var Index = ds_list_find_index(ladders, player.Ladder)
 					var newIndex = Index-Dice.value
 					player.Ladder = ladders[| newIndex]
+					
+					laddersMoving = true
 					
 				}
 			}
